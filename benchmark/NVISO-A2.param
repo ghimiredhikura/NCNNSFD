@@ -1,0 +1,108 @@
+7767517
+106 129
+Input            data             0 1 data 0=640 1=640 2=3
+Split            splitncnn_0      1 7 data data_splitncnn_0 data_splitncnn_1 data_splitncnn_2 data_splitncnn_3 data_splitncnn_4 data_splitncnn_5 data_splitncnn_6
+Convolution      conv1_1          1 1 data_splitncnn_6 conv1_1 0=64 1=3 2=1 3=1 4=1 5=1 6=1728
+ReLU             relu1_1          1 1 conv1_1 conv1_1_relu1_1
+Convolution      conv1_2          1 1 conv1_1_relu1_1 conv1_2 0=64 1=3 2=1 3=1 4=1 5=1 6=36864
+ReLU             relu1_2          1 1 conv1_2 conv1_2_relu1_2
+Pooling          pool1            1 1 conv1_2_relu1_2 pool1 0=0 1=2 2=2 3=0 4=0
+Convolution      conv2_1          1 1 pool1 conv2_1 0=128 1=3 2=1 3=1 4=1 5=1 6=73728
+ReLU             relu2_1          1 1 conv2_1 conv2_1_relu2_1
+Convolution      conv2_2          1 1 conv2_1_relu2_1 conv2_2 0=128 1=3 2=1 3=1 4=1 5=1 6=147456
+ReLU             relu2_2          1 1 conv2_2 conv2_2_relu2_2
+Pooling          pool2            1 1 conv2_2_relu2_2 pool2 0=0 1=2 2=2 3=0 4=0
+Convolution      conv3_1          1 1 pool2 conv3_1 0=256 1=3 2=1 3=1 4=1 5=1 6=294912
+ReLU             relu3_1          1 1 conv3_1 conv3_1_relu3_1
+Convolution      conv3_2          1 1 conv3_1_relu3_1 conv3_2 0=256 1=3 2=1 3=1 4=1 5=1 6=589824
+ReLU             relu3_2          1 1 conv3_2 conv3_2_relu3_2
+Convolution      conv3_3          1 1 conv3_2_relu3_2 conv3_3 0=256 1=3 2=1 3=1 4=1 5=1 6=589824
+ReLU             relu3_3          1 1 conv3_3 conv3_3_relu3_3
+Split            splitncnn_1      1 2 conv3_3_relu3_3 conv3_3_relu3_3_splitncnn_0 conv3_3_relu3_3_splitncnn_1
+Pooling          pool3            1 1 conv3_3_relu3_3_splitncnn_1 pool3 0=0 1=2 2=2 3=0 4=0
+Convolution      conv4_1          1 1 pool3 conv4_1 0=512 1=3 2=1 3=1 4=1 5=1 6=1179648
+ReLU             relu4_1          1 1 conv4_1 conv4_1_relu4_1
+Convolution      conv4_2          1 1 conv4_1_relu4_1 conv4_2 0=512 1=3 2=1 3=1 4=1 5=1 6=2359296
+ReLU             relu4_2          1 1 conv4_2 conv4_2_relu4_2
+Convolution      conv4_3          1 1 conv4_2_relu4_2 conv4_3 0=512 1=3 2=1 3=1 4=1 5=1 6=2359296
+ReLU             relu4_3          1 1 conv4_3 conv4_3_relu4_3
+Split            splitncnn_2      1 2 conv4_3_relu4_3 conv4_3_relu4_3_splitncnn_0 conv4_3_relu4_3_splitncnn_1
+Pooling          pool4            1 1 conv4_3_relu4_3_splitncnn_1 pool4 0=0 1=2 2=2 3=0 4=0
+Convolution      conv5_1          1 1 pool4 conv5_1 0=512 1=3 2=1 3=1 4=1 5=1 6=2359296
+ReLU             relu5_1          1 1 conv5_1 conv5_1_relu5_1
+Convolution      conv5_2          1 1 conv5_1_relu5_1 conv5_2 0=512 1=3 2=1 3=1 4=1 5=1 6=2359296
+ReLU             relu5_2          1 1 conv5_2 conv5_2_relu5_2
+Convolution      conv5_3          1 1 conv5_2_relu5_2 conv5_3 0=512 1=3 2=1 3=1 4=1 5=1 6=2359296
+ReLU             relu5_3          1 1 conv5_3 conv5_3_relu5_3
+Split            splitncnn_3      1 2 conv5_3_relu5_3 conv5_3_relu5_3_splitncnn_0 conv5_3_relu5_3_splitncnn_1
+Pooling          pool5            1 1 conv5_3_relu5_3_splitncnn_1 pool5 0=0 1=2 2=2 3=0 4=0
+Convolution      fc6              1 1 pool5 fc6 0=1024 1=3 2=6 3=1 4=6 5=1 6=4718592
+ReLU             relu6            1 1 fc6 fc6_relu6
+Convolution      fc7              1 1 fc6_relu6 fc7 0=1024 1=1 2=1 3=1 4=0 5=1 6=1048576
+ReLU             relu7            1 1 fc7 fc7_relu7
+Split            splitncnn_4      1 4 fc7_relu7 fc7_relu7_splitncnn_0 fc7_relu7_splitncnn_1 fc7_relu7_splitncnn_2 fc7_relu7_splitncnn_3
+Convolution      conv6_1          1 1 fc7_relu7_splitncnn_3 conv6_1 0=256 1=1 2=1 3=1 4=0 5=1 6=262144
+ReLU             conv6_1_relu     1 1 conv6_1 conv6_1_conv6_1_relu
+Convolution      conv6_2          1 1 conv6_1_conv6_1_relu conv6_2 0=512 1=3 2=1 3=2 4=1 5=1 6=1179648
+ReLU             conv6_2_relu     1 1 conv6_2 conv6_2_conv6_2_relu
+Split            splitncnn_5      1 4 conv6_2_conv6_2_relu conv6_2_conv6_2_relu_splitncnn_0 conv6_2_conv6_2_relu_splitncnn_1 conv6_2_conv6_2_relu_splitncnn_2 conv6_2_conv6_2_relu_splitncnn_3
+Convolution      conv7_1          1 1 conv6_2_conv6_2_relu_splitncnn_3 conv7_1 0=128 1=1 2=1 3=1 4=0 5=1 6=65536
+ReLU             conv7_1_relu     1 1 conv7_1 conv7_1_conv7_1_relu
+Convolution      conv7_2          1 1 conv7_1_conv7_1_relu conv7_2 0=256 1=3 2=1 3=2 4=1 5=1 6=294912
+ReLU             conv7_2_relu     1 1 conv7_2 conv7_2_conv7_2_relu
+Split            splitncnn_6      1 3 conv7_2_conv7_2_relu conv7_2_conv7_2_relu_splitncnn_0 conv7_2_conv7_2_relu_splitncnn_1 conv7_2_conv7_2_relu_splitncnn_2
+Normalize        conv3_3_norm     1 1 conv3_3_relu3_3_splitncnn_0 conv3_3_norm 0=0 1=0 2=0.000000 3=256
+Split            splitncnn_7      1 3 conv3_3_norm conv3_3_norm_splitncnn_0 conv3_3_norm_splitncnn_1 conv3_3_norm_splitncnn_2
+Convolution      conv3_3_norm_mbox_loc 1 1 conv3_3_norm_splitncnn_2 conv3_3_norm_mbox_loc 0=4 1=3 2=1 3=1 4=1 5=1 6=9216
+Permute          conv3_3_norm_mbox_loc_perm 1 1 conv3_3_norm_mbox_loc conv3_3_norm_mbox_loc_perm 0=3
+Flatten          conv3_3_norm_mbox_loc_flat 1 1 conv3_3_norm_mbox_loc_perm conv3_3_norm_mbox_loc_flat
+Convolution      conv3_3_norm_mbox_conf 1 1 conv3_3_norm_splitncnn_1 conv3_3_norm_mbox_conf 0=2 1=3 2=1 3=1 4=1 5=1 6=4608
+Permute          conv3_3_norm_mbox_conf_perm 1 1 conv3_3_norm_mbox_conf conv3_3_norm_mbox_conf_perm 0=3
+Flatten          conv3_3_norm_mbox_conf_flat 1 1 conv3_3_norm_mbox_conf_perm conv3_3_norm_mbox_conf_flat
+PriorBox         conv3_3_norm_mbox_priorbox 2 1 conv3_3_norm_splitncnn_0 data_splitncnn_5 conv3_3_norm_mbox_priorbox -23300=1,16.000000 -23301=0 -23302=0 3=0.100000 4=0.100000 5=0.200000 6=0.200000 7=1 8=0 9=-233 10=-233 11=4.000000 12=4.000000 13=0.500000
+Normalize        conv4_3_norm     1 1 conv4_3_relu4_3_splitncnn_0 conv4_3_norm 0=0 1=0 2=0.000000 3=512
+Split            splitncnn_8      1 3 conv4_3_norm conv4_3_norm_splitncnn_0 conv4_3_norm_splitncnn_1 conv4_3_norm_splitncnn_2
+Convolution      conv4_3_norm_mbox_loc 1 1 conv4_3_norm_splitncnn_2 conv4_3_norm_mbox_loc 0=4 1=3 2=1 3=1 4=1 5=1 6=18432
+Permute          conv4_3_norm_mbox_loc_perm 1 1 conv4_3_norm_mbox_loc conv4_3_norm_mbox_loc_perm 0=3
+Flatten          conv4_3_norm_mbox_loc_flat 1 1 conv4_3_norm_mbox_loc_perm conv4_3_norm_mbox_loc_flat
+Convolution      conv4_3_norm_mbox_conf 1 1 conv4_3_norm_splitncnn_1 conv4_3_norm_mbox_conf 0=2 1=3 2=1 3=1 4=1 5=1 6=9216
+Permute          conv4_3_norm_mbox_conf_perm 1 1 conv4_3_norm_mbox_conf conv4_3_norm_mbox_conf_perm 0=3
+Flatten          conv4_3_norm_mbox_conf_flat 1 1 conv4_3_norm_mbox_conf_perm conv4_3_norm_mbox_conf_flat
+PriorBox         conv4_3_norm_mbox_priorbox 2 1 conv4_3_norm_splitncnn_0 data_splitncnn_4 conv4_3_norm_mbox_priorbox -23300=1,32.000000 -23301=0 -23302=0 3=0.100000 4=0.100000 5=0.200000 6=0.200000 7=1 8=0 9=-233 10=-233 11=8.000000 12=8.000000 13=0.500000
+Normalize        conv5_3_norm     1 1 conv5_3_relu5_3_splitncnn_0 conv5_3_norm 0=0 1=0 2=0.000000 3=512
+Split            splitncnn_9      1 3 conv5_3_norm conv5_3_norm_splitncnn_0 conv5_3_norm_splitncnn_1 conv5_3_norm_splitncnn_2
+Convolution      conv5_3_norm_mbox_loc 1 1 conv5_3_norm_splitncnn_2 conv5_3_norm_mbox_loc 0=4 1=3 2=1 3=1 4=1 5=1 6=18432
+Permute          conv5_3_norm_mbox_loc_perm 1 1 conv5_3_norm_mbox_loc conv5_3_norm_mbox_loc_perm 0=3
+Flatten          conv5_3_norm_mbox_loc_flat 1 1 conv5_3_norm_mbox_loc_perm conv5_3_norm_mbox_loc_flat
+Convolution      conv5_3_norm_mbox_conf 1 1 conv5_3_norm_splitncnn_1 conv5_3_norm_mbox_conf 0=2 1=3 2=1 3=1 4=1 5=1 6=9216
+Permute          conv5_3_norm_mbox_conf_perm 1 1 conv5_3_norm_mbox_conf conv5_3_norm_mbox_conf_perm 0=3
+Flatten          conv5_3_norm_mbox_conf_flat 1 1 conv5_3_norm_mbox_conf_perm conv5_3_norm_mbox_conf_flat
+PriorBox         conv5_3_norm_mbox_priorbox 2 1 conv5_3_norm_splitncnn_0 data_splitncnn_3 conv5_3_norm_mbox_priorbox -23300=1,64.000000 -23301=0 -23302=0 3=0.100000 4=0.100000 5=0.200000 6=0.200000 7=1 8=0 9=-233 10=-233 11=16.000000 12=16.000000 13=0.500000
+Convolution      fc7_mbox_loc     1 1 fc7_relu7_splitncnn_2 fc7_mbox_loc 0=4 1=3 2=1 3=1 4=1 5=1 6=36864
+Permute          fc7_mbox_loc_perm 1 1 fc7_mbox_loc fc7_mbox_loc_perm 0=3
+Flatten          fc7_mbox_loc_flat 1 1 fc7_mbox_loc_perm fc7_mbox_loc_flat
+Convolution      fc7_mbox_conf    1 1 fc7_relu7_splitncnn_1 fc7_mbox_conf 0=2 1=3 2=1 3=1 4=1 5=1 6=18432
+Permute          fc7_mbox_conf_perm 1 1 fc7_mbox_conf fc7_mbox_conf_perm 0=3
+Flatten          fc7_mbox_conf_flat 1 1 fc7_mbox_conf_perm fc7_mbox_conf_flat
+PriorBox         fc7_mbox_priorbox 2 1 fc7_relu7_splitncnn_0 data_splitncnn_2 fc7_mbox_priorbox -23300=1,128.000000 -23301=0 -23302=0 3=0.100000 4=0.100000 5=0.200000 6=0.200000 7=1 8=0 9=-233 10=-233 11=32.000000 12=32.000000 13=0.500000
+Convolution      conv6_2_mbox_loc 1 1 conv6_2_conv6_2_relu_splitncnn_2 conv6_2_mbox_loc 0=4 1=3 2=1 3=1 4=1 5=1 6=18432
+Permute          conv6_2_mbox_loc_perm 1 1 conv6_2_mbox_loc conv6_2_mbox_loc_perm 0=3
+Flatten          conv6_2_mbox_loc_flat 1 1 conv6_2_mbox_loc_perm conv6_2_mbox_loc_flat
+Convolution      conv6_2_mbox_conf 1 1 conv6_2_conv6_2_relu_splitncnn_1 conv6_2_mbox_conf 0=2 1=3 2=1 3=1 4=1 5=1 6=9216
+Permute          conv6_2_mbox_conf_perm 1 1 conv6_2_mbox_conf conv6_2_mbox_conf_perm 0=3
+Flatten          conv6_2_mbox_conf_flat 1 1 conv6_2_mbox_conf_perm conv6_2_mbox_conf_flat
+PriorBox         conv6_2_mbox_priorbox 2 1 conv6_2_conv6_2_relu_splitncnn_0 data_splitncnn_1 conv6_2_mbox_priorbox -23300=1,256.000000 -23301=0 -23302=0 3=0.100000 4=0.100000 5=0.200000 6=0.200000 7=1 8=0 9=-233 10=-233 11=64.000000 12=64.000000 13=0.500000
+Convolution      conv7_2_mbox_loc 1 1 conv7_2_conv7_2_relu_splitncnn_2 conv7_2_mbox_loc 0=4 1=3 2=1 3=1 4=1 5=1 6=9216
+Permute          conv7_2_mbox_loc_perm 1 1 conv7_2_mbox_loc conv7_2_mbox_loc_perm 0=3
+Flatten          conv7_2_mbox_loc_flat 1 1 conv7_2_mbox_loc_perm conv7_2_mbox_loc_flat
+Convolution      conv7_2_mbox_conf 1 1 conv7_2_conv7_2_relu_splitncnn_1 conv7_2_mbox_conf 0=2 1=3 2=1 3=1 4=1 5=1 6=4608
+Permute          conv7_2_mbox_conf_perm 1 1 conv7_2_mbox_conf conv7_2_mbox_conf_perm 0=3
+Flatten          conv7_2_mbox_conf_flat 1 1 conv7_2_mbox_conf_perm conv7_2_mbox_conf_flat
+PriorBox         conv7_2_mbox_priorbox 2 1 conv7_2_conv7_2_relu_splitncnn_0 data_splitncnn_0 conv7_2_mbox_priorbox -23300=1,512.000000 -23301=0 -23302=0 3=0.100000 4=0.100000 5=0.200000 6=0.200000 7=1 8=0 9=-233 10=-233 11=128.000000 12=128.000000 13=0.500000
+Concat           mbox_loc         6 1 conv3_3_norm_mbox_loc_flat conv4_3_norm_mbox_loc_flat conv5_3_norm_mbox_loc_flat fc7_mbox_loc_flat conv6_2_mbox_loc_flat conv7_2_mbox_loc_flat mbox_loc 0=0
+Concat           mbox_conf        6 1 conv3_3_norm_mbox_conf_flat conv4_3_norm_mbox_conf_flat conv5_3_norm_mbox_conf_flat fc7_mbox_conf_flat conv6_2_mbox_conf_flat conv7_2_mbox_conf_flat mbox_conf 0=0
+Concat           mbox_priorbox    6 1 conv3_3_norm_mbox_priorbox conv4_3_norm_mbox_priorbox conv5_3_norm_mbox_priorbox fc7_mbox_priorbox conv6_2_mbox_priorbox conv7_2_mbox_priorbox mbox_priorbox 0=1
+Reshape          mbox_conf_reshape 1 1 mbox_conf mbox_conf_reshape 0=2 1=-1 2=0 3=0
+Softmax          mbox_conf_softmax 1 1 mbox_conf_reshape mbox_conf_softmax 0=1
+Flatten          mbox_conf_flatten 1 1 mbox_conf_softmax mbox_conf_flatten
+DetectionOutput  detection_out    3 1 mbox_loc mbox_conf_flatten mbox_priorbox detection_out 0=2 1=0.300000 2=5000 3=750 4=0.050000
